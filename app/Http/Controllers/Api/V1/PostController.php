@@ -37,7 +37,7 @@ class PostController extends Controller
         }
 
         //Consultamos los post paginados
-        $posts = Post::where($queryItems)->paginate(10);
+        $posts = Post::where($queryItems)->orderBy('created_at', 'desc')->paginate(10);
 
 
         $postResource = new PostCollection($posts);
