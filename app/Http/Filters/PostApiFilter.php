@@ -11,7 +11,9 @@ class PostApiFilter extends ApiFilter
         'id' => ['eq', 'lt', 'lte', 'gt', 'gte', 'ne'],
         'description' => ['eq', 'lt', 'lte', 'gt', 'gte', 'ne'],
         'created_at' => ['eq', 'lt', 'lte', 'gt', 'gte', 'ne'],
-        'user',
+        'user' => ['eq'],
+        'views' => ['eq', 'lt', 'lte', 'gt', 'gte', 'ne'],
+
     ];
 
     //Mapea las columnas a como queremos que se filtren
@@ -20,6 +22,7 @@ class PostApiFilter extends ApiFilter
         'description' => 'description',
         'created_at' => 'created_at',
         'user' => 'user_id',
+        'views' => 'profile_views',
     ];
 
     /**
