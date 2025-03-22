@@ -4,12 +4,13 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Posts;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('dashboard', 'dashboard')
+Route::get('dashboard', Posts::class)
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
