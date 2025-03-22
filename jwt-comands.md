@@ -2,6 +2,8 @@
 
 ```bash
 composer require tymon/jwt-auth
+php artisan install:api
+
 ```
 
 # Publicar configuracion
