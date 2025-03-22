@@ -60,6 +60,11 @@
             </main>
         </div>
 
+        <!--Footer-->
+        <footer class="bg-gradient-to-l from-primary to-secondary" id="footer">
+            <a class="text-white"> © TODOS LOS DERECHOS RESERVADOS - ByteCreaColombia</a>
+        </footer>
+
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
