@@ -4,12 +4,15 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Post;
+use App\Models\User;
 
 class Posts extends Component
 {
     public $description;
     public $user_id;
     public $countPosts;
+    public $profile_views;
+    public $posts;
 
     public function mount(){
         //$this->posts = Post::all();
@@ -38,7 +41,13 @@ class Posts extends Component
 
     public function updatePosts(){
         $this->countPosts = Post::where('user_id', $this->user_id)->count();
-        $this->posts = Post::all();
+        $this->profile_views = User::find($this->user_id)->profile_views;
+        $this->posts = Post::where('user_id', $this->user_id)->orderBy('created_at', 'desc')->get();
+    }
+
+    public function deletePost($id){
+        Post::destroy($id);
+        $this->updatePosts();
     }
 
     public function render()

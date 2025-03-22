@@ -28,15 +28,52 @@
     </div>
     <div class="grid auto-rows-min gap-4 md:grid-cols-3">
         <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-            <h3 class="">Cantidad de vistazos</h3>
-            <p class="absolute inset-0 flex items-center justify-center text-lg font-semibold text-neutral-500 dark:text-neutral-400">0</p>
+            <!--tabla para ver los post-->
+            <table class="min-w-full
+            bg-white dark:bg-gray-800">
+                <thead>
+                    <tr>
+                        <th class="py-3 px-6 text-left">Descripción</th>
+                        <th class="py-3 px-6 text-left">Fecha</th>
+                        <th class="py-3 px-6 text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($posts as $post)
+                    <tr class="border-b border-gray-200 dark:border-gray-700">
+                        <td class="py-3 px-6 text-left whitespace-nowrap">
+                            <div class="flex items
+                            center">
+                                <span class="font-medium">{{$post->description}}</span>
+                            </div>
+                        </td>
+                        <td class="py-3 px-6 text-left">
+                            <div class="flex items
+                            center">
+                                <span>{{$post->created_at}}</span>
+                            </div>
+                        </td>
+                        <td class="py-3 px-6 text-center">
+                            <div class="flex item-center justify-center">
+                                <button wire:click="deletePost({{$post->id}})" class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-        <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-            <h3 class="">Cantidad de reflejos</h3>
+        <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 text-center">
+            <h3 class="py-3" >Cantidad de reflejos</h3>
             <p class="absolute inset-0 flex items-center justify-center text-lg font-semibold text-neutral-500 dark:text-neutral-400">{{$countPosts}}</p>
         </div>
-        <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-            <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
+        <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 text-center">
+            <h3 class="py-3">Cantidad de vistazos</h3>
+            <p class="absolute inset-0 flex items-center justify-center text-lg font-semibold text-neutral-500 dark:text-neutral-400">{{$profile_views}}</p>
         </div>
     </div>
 </div>
